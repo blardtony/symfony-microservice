@@ -1,0 +1,48 @@
+services:
+  api-gateway:
+    build:
+      context: ./api-gateway
+      dockerfile: Dockerfile
+    ports:
+      - "80:80"
+    volumes:
+      - ./api-gateway:/var/www/html
+    environment:
+      - APP_ENV=dev
+      - APP_SECRET=your_secret_here
+      - USER_SERVICE_URL=http://user-service
+    networks:
+      - api-network
+
+  user-service:
+    build:
+      context: ./user-service
+      dockerfile: Dockerfile
+    ports:
+        - "81:80"
+    volumes:
+      - ./user-service:/var/www/html
+    environment:
+        - APP_ENV=dev
+        - APP_SECRET=your_secret_here
+        - DATABASE_URL=mysql://root:userservicepassword@user-database/user_service_db
+    networks:
+      - api-network
+      - user-service-network
+
+  user-database:
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: userservicepassword
+      MYSQL_DATABASE: user_service_db
+    volumes:
+      - user-database-data:/var/lib/mysql
+    networks:
+      - user-service-network
+
+volumes:
+  user-database-data:
+
+networks:
+    api-network:
+    user-service-network:
