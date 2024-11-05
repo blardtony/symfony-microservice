@@ -4,11 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ad698008-d0aa-4532-90d2-2fa099f54d19" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/product-service/src/Message/OrderCreated.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/product-service/src/MessageHandler/OrderCreatedHandler.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user-service/src/Message/OrderCreated.php" afterDir="false" />
+    <list default="true" id="ad698008-d0aa-4532-90d2-2fa099f54d19" name="Changes" comment=":sparkles: Test with 2 handler">
+      <change beforePath="$PROJECT_DIR$/.idea/codeception.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/codeception.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/phpspec.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/phpspec.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/symfony-microservice.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/symfony-microservice.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
@@ -16,16 +15,12 @@
       <change beforePath="$PROJECT_DIR$/product-service/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/product-service/Dockerfile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/product-service/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/product-service/composer.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/product-service/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/product-service/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/product-service/config/bundles.php" beforeDir="false" afterPath="$PROJECT_DIR$/product-service/config/bundles.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/product-service/src/Controller/ApiController.php" beforeDir="false" afterPath="$PROJECT_DIR$/product-service/src/Controller/ProductController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/product-service/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/product-service/symfony.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/product-service/config/packages/messenger.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/product-service/config/packages/messenger.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/user-service/.env" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/.env" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/user-service/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/Dockerfile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/user-service/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/composer.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/user-service/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-service/config/bundles.php" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/config/bundles.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-service/src/Controller/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/Controller/UserController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-service/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/symfony.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/config/packages/messenger.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/config/packages/messenger.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,7 +36,19 @@
     <pharConfigPath>$PROJECT_DIR$/user-service/composer.json</pharConfigPath>
     <execution />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="noApiGateway" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="PhpWorkspaceProjectConfiguration" interpreter_name="/bin/php">
@@ -164,8 +171,6 @@
       <path value="$PROJECT_DIR$/product-service/vendor/psr/clock" />
       <path value="$PROJECT_DIR$/product-service/vendor/symfony/clock" />
       <path value="$PROJECT_DIR$/product-service/vendor/symfony/messenger" />
-      <path value="$PROJECT_DIR$/product-service/vendor/symfony/amqp-messenger" />
-      <path value="$PROJECT_DIR$/user-service/vendor/symfony/amqp-messenger" />
       <path value="$PROJECT_DIR$/user-service/vendor/symfony/web-profiler-bundle" />
       <path value="$PROJECT_DIR$/user-service/vendor/symfony/twig-bundle" />
       <path value="$PROJECT_DIR$/user-service/vendor/symfony/stopwatch" />
@@ -175,6 +180,10 @@
       <path value="$PROJECT_DIR$/product-service/vendor/monolog/monolog" />
       <path value="$PROJECT_DIR$/product-service/vendor/symfony/monolog-bundle" />
       <path value="$PROJECT_DIR$/product-service/vendor/symfony/monolog-bridge" />
+      <path value="$PROJECT_DIR$/user-service/vendor/symfony/redis-messenger" />
+      <path value="$PROJECT_DIR$/product-service/vendor/symfony/redis-messenger" />
+      <path value="$PROJECT_DIR$/product-service/vendor/predis/predis" />
+      <path value="$PROJECT_DIR$/user-service/vendor/predis/predis" />
     </include_path>
   </component>
   <component name="ProjectColorInfo">{
@@ -185,19 +194,21 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "noApiGateway",
-    "last_opened_file_path": "/home/nyto/Documents/mydigitalschool/symfony-microservice/product-service/src",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;noApiGatewayRedis&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/nyto/Documents/mydigitalschool/symfony-microservice/product-service/src&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;fileTemplates&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/product-service/src" />
@@ -232,11 +243,45 @@
       <option name="presentableId" value="Default" />
       <updated>1729330001578</updated>
       <workItem from="1729330002736" duration="3300000" />
-      <workItem from="1730805938664" duration="8837000" />
+      <workItem from="1730805938664" duration="13879000" />
+      <workItem from="1730823503749" duration="318000" />
     </task>
+    <task id="LOCAL-00001" summary=":sparkles: Create order_created queue in RabbitMQ&#10;Handle async communication between two service">
+      <option name="closed" value="true" />
+      <created>1730814860975</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1730814860976</updated>
+    </task>
+    <task id="LOCAL-00002" summary=":sparkles: Test with 2 handler">
+      <option name="closed" value="true" />
+      <created>1730817281777</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1730817281777</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value=":sparkles: Create order_created queue in RabbitMQ&#10;Handle async communication between two service" />
+    <MESSAGE value=":sparkles: Test with 2 handler" />
+    <option name="LAST_COMMIT_MESSAGE" value=":sparkles: Test with 2 handler" />
   </component>
 </project>

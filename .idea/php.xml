@@ -130,8 +130,6 @@
       <path value="$PROJECT_DIR$/product-service/vendor/psr/clock" />
       <path value="$PROJECT_DIR$/product-service/vendor/symfony/clock" />
       <path value="$PROJECT_DIR$/product-service/vendor/symfony/messenger" />
-      <path value="$PROJECT_DIR$/product-service/vendor/symfony/amqp-messenger" />
-      <path value="$PROJECT_DIR$/user-service/vendor/symfony/amqp-messenger" />
       <path value="$PROJECT_DIR$/user-service/vendor/symfony/web-profiler-bundle" />
       <path value="$PROJECT_DIR$/user-service/vendor/symfony/twig-bundle" />
       <path value="$PROJECT_DIR$/user-service/vendor/symfony/stopwatch" />
@@ -141,6 +139,10 @@
       <path value="$PROJECT_DIR$/product-service/vendor/monolog/monolog" />
       <path value="$PROJECT_DIR$/product-service/vendor/symfony/monolog-bundle" />
       <path value="$PROJECT_DIR$/product-service/vendor/symfony/monolog-bridge" />
+      <path value="$PROJECT_DIR$/user-service/vendor/symfony/redis-messenger" />
+      <path value="$PROJECT_DIR$/product-service/vendor/symfony/redis-messenger" />
+      <path value="$PROJECT_DIR$/product-service/vendor/predis/predis" />
+      <path value="$PROJECT_DIR$/user-service/vendor/predis/predis" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="8.2" />

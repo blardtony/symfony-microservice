@@ -11,11 +11,9 @@ framework:
             orders:
                 dsn: '%env(MESSENGER_TRANSPORT_DSN)%'
                 options:
-                    exchange:
-                        name: 'orders'
-                        type: 'direct'
-                    queues:
-                        orders_created:
+                    group: orders
+                    delete_after_ack: false
+                    delete_after_reject: false
         routing:
             'App\Message\OrderCreated': orders
 

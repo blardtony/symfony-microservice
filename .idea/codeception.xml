@@ -18,6 +18,12 @@
         <Configuration>
           <option name="path" value="$PROJECT_DIR$/product-service/tests" />
         </Configuration>
+        <Configuration>
+          <option name="path" value="$PROJECT_DIR$/product-service/tests" />
+        </Configuration>
+        <Configuration>
+          <option name="path" value="$PROJECT_DIR$/user-service/tests" />
+        </Configuration>
       </list>
     </option>
   </component>

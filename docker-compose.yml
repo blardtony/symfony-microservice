@@ -11,7 +11,6 @@ services:
       - APP_DEBUG=1
       - APP_ENV=dev
       - APP_SECRET=your_secret_here
-      - MESSENGER_TRANSPORT_DSN=amqp://guest:guest@rabbitmq:5672/%2f
     networks:
       - product-service-network
 
@@ -28,7 +27,6 @@ services:
       - APP_ENV=dev
       - APP_SECRET=your_secret_here
       - DATABASE_URL=mysql://root:userservicepassword@user-database/user_service_db
-      - MESSENGER_TRANSPORT_DSN=amqp://guest:guest@rabbitmq:5672/%2f
     networks:
       - product-service-network
       - user-service-network
@@ -42,20 +40,19 @@ services:
       - user-database-data:/var/lib/mysql
     networks:
       - user-service-network
-  rabbitmq:
-    image: rabbitmq:4-management
+  redis:
+    image: redis:alpine
     ports:
-      - "5672:5672" # AMQP protocol port
-      - "15672:15672" # Management UI
+      - "6379:6379"
     volumes:
-      - rabbitmq-data:/var/lib/rabbitmq
+      - redis-data:/data
     networks:
-      - product-service-network
       - user-service-network
+      - product-service-network
 
 volumes:
   user-database-data:
-  rabbitmq-data:
+  redis-data:
 
 networks:
   product-service-network:

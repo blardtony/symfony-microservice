@@ -5,18 +5,16 @@ framework:
 
         transports:
             # https://symfony.com/doc/current/messenger.html#transport-configuration
-            # async: '%env(MESSENGER_TRANSPORT_DSN)%'
+#            async: '%env(MESSENGER_TRANSPORT_DSN)%'
             # failed: 'doctrine://default?queue_name=failed'
             # sync: 'sync://'
             # failed: 'doctrine://default?queue_name=failed'
             orders:
                 dsn: '%env(MESSENGER_TRANSPORT_DSN)%'
                 options:
-                    exchange:
-                        name: 'orders'
-                        type: 'direct'
-                    queues:
-                        orders_created:
+                    group: orders
+                    delete_after_ack: false
+                    delete_after_reject: false
 
         routing:
             # Route your messages to the transports
