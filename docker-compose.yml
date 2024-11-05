@@ -1,33 +1,34 @@
 services:
-  api-gateway:
+  product-service:
     build:
-      context: ./api-gateway
+      context: ./product-service
       dockerfile: Dockerfile
     ports:
       - "80:80"
     volumes:
-      - ./api-gateway:/var/www/html
+      - ./product-service:/var/www/html
     environment:
       - APP_ENV=dev
       - APP_SECRET=your_secret_here
       - USER_SERVICE_URL=http://user-service
+      - RABBITMQ_HOST=rabbitmq
     networks:
-      - api-network
+      - product-service-network
 
   user-service:
     build:
       context: ./user-service
       dockerfile: Dockerfile
     ports:
-        - "81:80"
+      - "81:80"
     volumes:
       - ./user-service:/var/www/html
     environment:
-        - APP_ENV=dev
-        - APP_SECRET=your_secret_here
-        - DATABASE_URL=mysql://root:userservicepassword@user-database/user_service_db
+      - APP_ENV=dev
+      - APP_SECRET=your_secret_here
+      - DATABASE_URL=mysql://root:userservicepassword@user-database/user_service_db
     networks:
-      - api-network
+      - product-service-network
       - user-service-network
 
   user-database:
@@ -39,10 +40,21 @@ services:
       - user-database-data:/var/lib/mysql
     networks:
       - user-service-network
+  rabbitmq:
+    image: rabbitmq:4-management
+    ports:
+      - "5672:5672" # AMQP protocol port
+      - "15672:15672" # Management UI
+    volumes:
+      - rabbitmq-data:/var/lib/rabbitmq
+    networks:
+      - product-service-network
+      - user-service-network
 
 volumes:
   user-database-data:
+  rabbitmq-data:
 
 networks:
-    api-network:
-    user-service-network:
+  product-service-network:
+  user-service-network:
