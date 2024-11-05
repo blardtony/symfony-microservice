@@ -8,7 +8,7 @@ use Psr\Log\LoggerInterface;
 use Symfony\Component\Messenger\Attribute\AsMessageHandler;
 
 #[AsMessageHandler]
-final readonly class OrderCreatedHandler
+final readonly class OrderHandler
 {
     public function __construct(private LoggerInterface $logger)
     {
@@ -17,6 +17,6 @@ final readonly class OrderCreatedHandler
     {
         $orderId = $orderCreated->getOrderId();
         $totalAmount = $orderCreated->getTotalAmount();
-        $this->logger->info("OrderCreatedHandler Order created with id: $orderId and total amount: $totalAmount");
+        $this->logger->info("OrderHandler Order created with id: $orderId and total amount: $totalAmount");
     }
 }
