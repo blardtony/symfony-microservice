@@ -4,7 +4,10 @@ FROM php:8.3-apache
 RUN apt-get update && apt-get install -y \
     git \
     unzip \
-    libzip-dev
+    libzip-dev \
+    librabbitmq-dev \
+    && pecl install amqp \
+    && docker-php-ext-enable amqp
 
 # Install PHP extensions
 RUN docker-php-ext-install pdo pdo_mysql zip

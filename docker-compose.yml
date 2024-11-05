@@ -4,14 +4,14 @@ services:
       context: ./product-service
       dockerfile: Dockerfile
     ports:
-      - "80:80"
+      - "82:80"
     volumes:
       - ./product-service:/var/www/html
     environment:
+      - APP_DEBUG=1
       - APP_ENV=dev
       - APP_SECRET=your_secret_here
-      - USER_SERVICE_URL=http://user-service
-      - RABBITMQ_HOST=rabbitmq
+      - MESSENGER_TRANSPORT_DSN=amqp://guest:guest@rabbitmq:5672/%2f
     networks:
       - product-service-network
 
@@ -24,9 +24,11 @@ services:
     volumes:
       - ./user-service:/var/www/html
     environment:
+      - APP_DEBUG=1
       - APP_ENV=dev
       - APP_SECRET=your_secret_here
       - DATABASE_URL=mysql://root:userservicepassword@user-database/user_service_db
+      - MESSENGER_TRANSPORT_DSN=amqp://guest:guest@rabbitmq:5672/%2f
     networks:
       - product-service-network
       - user-service-network
